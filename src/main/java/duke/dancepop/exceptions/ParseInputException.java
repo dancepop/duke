@@ -2,10 +2,13 @@ package duke.dancepop.exceptions;
 
 import duke.dancepop.Log;
 
-public class ParseInputException extends Throwable {
+public class ParseInputException extends InputException {
 
-    // TODO: Come up with own message
     public ParseInputException() {
-        Log.printMsg("OOPS!!! I'm sorry, but I don't know what that means :-(");
+        super();
+    }
+
+    public String getMessage() {
+        return ExceptionConsts.UNKNOWN_COMMAND;
     }
 }

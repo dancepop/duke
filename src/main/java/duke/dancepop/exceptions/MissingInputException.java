@@ -2,10 +2,18 @@ package duke.dancepop.exceptions;
 
 import duke.dancepop.Log;
 
-public class MissingInputException extends Throwable {
+import java.text.MessageFormat;
 
-    // TODO: Come up with own message
-    public MissingInputException(String message) {
-        Log.printMsg("OOPS!!! The description of a " + message + " cannot be empty.");
+public class MissingInputException extends InputException {
+
+    private String description;
+
+    public MissingInputException(String description) {
+        super();
+        this.description = description;
+    }
+
+    public String getMessage() {
+        return MessageFormat.format(ExceptionConsts.DESCRIPTION_CANNOT_BE_EMPTY, description);
     }
 }

@@ -1,10 +1,15 @@
 package duke.dancepop.parser;
 
+import duke.dancepop.enums.CommandEnum;
+import duke.dancepop.exceptions.InputException;
+import duke.dancepop.exceptions.MissingInputException;
+import duke.dancepop.exceptions.ParseInputException;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-  public static Command parse(String input) throws IllegalArgumentException {
+  public static Command parse(String input) throws InputException {
     String[] parts = input.split(" ", 2);
     String command = parts[0].toLowerCase().trim();
     String arguments = parts.length > 1 ? parts[1].trim() : "";
@@ -34,14 +39,13 @@ public class Parser {
       case "bye" -> {
         return parseBye(arguments);
       }
-      // TODO: Handle invalid input flow
-      default -> { return null; }
+      default -> { throw new ParseInputException(); }
     }
   }
 
-  private static Command parseTodo(String arguments) {
+  private static Command parseTodo(String arguments) throws MissingInputException {
     if (arguments.isBlank()) {
-      // TODO: Handle error flow
+      throw new MissingInputException(CommandEnum.TODO.getValue());
     }
     return new TodoCommand(arguments);
   }

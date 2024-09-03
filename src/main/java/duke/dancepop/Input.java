@@ -13,12 +13,14 @@ public class Input {
         while (true) {
             String echo = getString();
             Task task = new Todo(echo);
-            Log.printSeparator();
 
             // TODO: Fix design for loop
             String command = echo.split(" ")[0];
             if (command.equalsIgnoreCase("mark")) {
                 TaskList.markDone(Integer.parseInt(echo.split(" ")[1]));
+//                Nice! I've marked this task as done:
+//       [X] return book
+
                 continue;
             }
 

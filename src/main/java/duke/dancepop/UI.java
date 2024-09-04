@@ -1,7 +1,6 @@
 package duke.dancepop;
 
 import duke.dancepop.exceptions.InputException;
-import duke.dancepop.exceptions.ParseInputException;
 import duke.dancepop.parser.Command;
 import duke.dancepop.parser.Parser;
 
@@ -18,7 +17,7 @@ public class UI {
                 Command command = Parser.parse(echo);
                 command.execute();
             } catch (InputException e) {
-                Log.printMsg(e.getMessage());;
+                Log.printMsg(e.getMessages().toArray(new String[0]));
             }
         }
     }

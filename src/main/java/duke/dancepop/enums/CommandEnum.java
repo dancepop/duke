@@ -3,7 +3,12 @@ package duke.dancepop.enums;
 public enum CommandEnum {
   EVENT("event"),
   TODO("todo"),
-  DEADLINE("deadline");
+  DEADLINE("deadline"),
+  LIST("list"),
+  BYE("bye"),
+  MARK("mark"),
+  UNMARK("unmark"),
+  DELETE("delete");
 
   private final String value;
 

@@ -7,9 +7,10 @@ import duke.dancepop.entities.Deadline;
 import duke.dancepop.entities.Event;
 import duke.dancepop.entities.Task;
 import duke.dancepop.entities.Todo;
+import duke.dancepop.exceptions.ExitException;
 
 public abstract class Command {
-  public abstract void execute();
+  public abstract void execute() throws ExitException;
 }
 
 abstract class UnaryCommand extends Command {}
@@ -20,10 +21,10 @@ class ListCommand extends UnaryCommand {
   }
 }
 
-class ByeCommand extends UnaryCommand {
-  public void execute() {
+class ByeCommand extends UnaryCommand  {
+  public void execute() throws ExitException {
     Log.printMsg("Bye. Hope to see you again soon!");
-    System.exit(0);
+    throw new ExitException();
   }
 }
 

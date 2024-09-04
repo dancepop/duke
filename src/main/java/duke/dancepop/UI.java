@@ -1,5 +1,6 @@
 package duke.dancepop;
 
+import duke.dancepop.exceptions.ExitException;
 import duke.dancepop.exceptions.InputException;
 import duke.dancepop.parser.Command;
 import duke.dancepop.parser.Parser;
@@ -12,17 +13,19 @@ public class UI {
     public static void start() {
         Log.printMsg("Hello! I'm DancePop", "What can I do for you?");
         while (true) {
-            String echo = getString();
+            String input = getString();
             try {
-                Command command = Parser.parse(echo);
+                Command command = Parser.parse(input);
                 command.execute();
             } catch (InputException e) {
                 Log.printMsg(e.getMessages().toArray(new String[0]));
+            } catch (ExitException e) {
+                return;
             }
         }
     }
 
-    public static String getString() {
+    private static String getString() {
         return scanner.nextLine().trim();
     }
 }

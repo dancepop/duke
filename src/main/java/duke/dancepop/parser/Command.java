@@ -7,10 +7,15 @@ import duke.dancepop.entities.Deadline;
 import duke.dancepop.entities.Event;
 import duke.dancepop.entities.Task;
 import duke.dancepop.entities.Todo;
+import duke.dancepop.enums.CommandEnum;
+import duke.dancepop.exceptions.ErrorMessageBuilder;
 import duke.dancepop.exceptions.ExitException;
+import duke.dancepop.exceptions.InputException;
+
+import java.util.List;
 
 public abstract class Command {
-  public abstract void execute() throws ExitException;
+  public abstract void execute() throws ExitException, InputException;
 }
 
 abstract class UnaryCommand extends Command {}
@@ -89,8 +94,13 @@ class MarkCommand extends BinaryCommand<Integer> {
     super(value);
   }
 
-  public void execute() {
-    TaskList.markDone(value-1);
+  public void execute() throws InputException {
+    try {
+      TaskList.markDone(value-1);
+    } catch (IndexOutOfBoundsException ioobe) {
+      List<String> errors = new ErrorMessageBuilder(CommandEnum.MARK).indexOutOfBounds().build();
+      throw new InputException(errors);
+    }
   }
 }
 
@@ -100,8 +110,13 @@ class UnmarkCommand extends BinaryCommand<Integer> {
     super(value);
   }
 
-  public void execute() {
-    TaskList.unmarkDone(value-1);
+  public void execute() throws InputException {
+    try {
+      TaskList.unmarkDone(value - 1);
+    } catch (IndexOutOfBoundsException ioobe) {
+      List<String> errors = new ErrorMessageBuilder(CommandEnum.UNMARK).indexOutOfBounds().build();
+      throw new InputException(errors);
+    }
   }
 }
 
@@ -111,7 +126,12 @@ class DeleteCommand extends BinaryCommand<Integer> {
     super(value);
   }
 
-  public void execute() {
-    TaskList.remove(value-1);
+  public void execute() throws InputException {
+    try {
+      TaskList.remove(value-1);
+    } catch (IndexOutOfBoundsException ioobe) {
+      List<String> errors = new ErrorMessageBuilder(CommandEnum.DELETE).indexOutOfBounds().build();
+      throw new InputException(errors);
+    }
   }
 }

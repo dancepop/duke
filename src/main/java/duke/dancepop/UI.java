@@ -8,9 +8,12 @@ import duke.dancepop.parser.Parser;
 import java.util.Scanner;
 
 public class UI {
-    private static final Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner;
 
     public static void start() {
+        // Re-initialize scanner for easier testing
+        scanner = new Scanner(System.in);
+
         Log.printMsg("Hello! I'm DancePop", "What can I do for you?");
         while (true) {
             String input = getString();

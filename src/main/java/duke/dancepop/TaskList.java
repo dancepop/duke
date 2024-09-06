@@ -40,6 +40,10 @@ public class TaskList {
         tasks.clear();
     }
 
+    public static List<Task> getTasks() {
+        return tasks;
+    }
+
     public static void print() {
         String header = "Here are the tasks in your list:";
         String[] taskDescriptions = tasks.stream()

@@ -1,6 +1,6 @@
 package duke.dancepop.parser;
 
-
+import duke.dancepop.Storage;
 import duke.dancepop.Log;
 import duke.dancepop.TaskList;
 import duke.dancepop.entities.Deadline;
@@ -29,6 +29,7 @@ class ListCommand extends UnaryCommand {
 class ByeCommand extends UnaryCommand  {
   public void execute() throws ExitException {
     Log.printMsg("Bye. Hope to see you again soon!");
+    Storage.saveToFile();
     throw new ExitException();
   }
 }

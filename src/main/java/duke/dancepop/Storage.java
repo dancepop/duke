@@ -4,6 +4,7 @@ import duke.dancepop.entities.Deadline;
 import duke.dancepop.entities.Task;
 import duke.dancepop.entities.Todo;
 import duke.dancepop.entities.Event;
+import duke.dancepop.utils.Log;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,9 +41,9 @@ public class Storage {
                     if (task instanceof Todo todo) {
                         writer.append("T|").append(String.valueOf(todo.getDone())).append("|").append(todo.getDescription()).append("\n");
                     } else if (task instanceof Deadline deadline) {
-                        writer.append("D|").append(String.valueOf(deadline.getDone())).append("|").append(deadline.getDescription()).append("|").append(deadline.getDeadline()).append("\n");
+                        writer.append("D|").append(String.valueOf(deadline.getDone())).append("|").append(deadline.getDescription()).append("|").append(deadline.getDeadline().toString()).append("\n");
                     } else if (task instanceof Event event) {
-                        writer.append("E|").append(String.valueOf(event.getDone())).append("|").append(event.getDescription()).append("|").append(event.getStart()).append("|").append(event.getEnd()).append("\n");
+                        writer.append("E|").append(String.valueOf(event.getDone())).append("|").append(event.getDescription()).append("|").append(event.getStart().toString()).append("|").append(event.getEnd().toString()).append("\n");
                     }
                 }
 

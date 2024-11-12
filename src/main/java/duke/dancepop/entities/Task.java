@@ -4,7 +4,7 @@ import duke.dancepop.enums.TaskEnum;
 
 public abstract class Task {
     private final TaskEnum type;
-    private boolean done;
+    private boolean isDone;
     private final String description;
 
     public Task(String description) {
@@ -17,15 +17,15 @@ public abstract class Task {
     public String getDescription() { return description; }
 
     public boolean getDone() {
-        return done;
+        return isDone;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void setDone(boolean isDone) {
+        this.isDone = isDone;
     }
 
-    public void setDone(String done) {
-        this.done = Boolean.parseBoolean(done);
+    public void setDone(String isDone) {
+        this.isDone = Boolean.parseBoolean(isDone);
     }
 
     public String toString() {

@@ -1,6 +1,7 @@
 package duke.dancepop;
 
 import duke.dancepop.entities.Task;
+import duke.dancepop.utils.Log;
 
 import java.util.ArrayList;
 import java.util.List;

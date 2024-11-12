@@ -1,4 +1,4 @@
-package duke.dancepop;
+package duke.dancepop.utils;
 
 public class Log {
     public static void printMsg(String... messages) {

@@ -1,7 +1,7 @@
 package duke.dancepop.parser;
 
 import duke.dancepop.Storage;
-import duke.dancepop.Log;
+import duke.dancepop.utils.Log;
 import duke.dancepop.TaskList;
 import duke.dancepop.entities.Deadline;
 import duke.dancepop.entities.Event;

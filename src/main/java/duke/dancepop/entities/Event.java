@@ -2,12 +2,14 @@ package duke.dancepop.entities;
 
 import duke.dancepop.enums.TaskEnum;
 
+import java.time.LocalDateTime;
+
 public class Event extends Task {
-    private String start;
-    private String end;
+    private LocalDateTime start;
+    private LocalDateTime end;
 
     // TODO: Fix design for inheritance
-    public Event(String description, String start, String end) {
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description);
         this.start = start;
         this.end = end;
@@ -17,11 +19,11 @@ public class Event extends Task {
         return TaskEnum.EVENT;
     }
 
-    public String getStart() {
+    public LocalDateTime getStart() {
         return start;
     }
 
-    public String getEnd() {
+    public LocalDateTime getEnd() {
         return end;
     }
 

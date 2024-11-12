@@ -2,11 +2,13 @@ package duke.dancepop.entities;
 
 import duke.dancepop.enums.TaskEnum;
 
+import java.time.LocalDateTime;
+
 public class Deadline extends Task {
-    private String deadline;
+    private LocalDateTime deadline;
 
     // TODO: Fix design for inheritance
-    public Deadline(String description, String deadline) {
+    public Deadline(String description, LocalDateTime deadline) {
         super(description);
         this.deadline = deadline;
     }
@@ -15,7 +17,7 @@ public class Deadline extends Task {
         return TaskEnum.DEADLINE;
     }
 
-    public String getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 

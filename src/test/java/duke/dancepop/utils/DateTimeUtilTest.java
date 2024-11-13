@@ -73,6 +73,7 @@ class DateTimeUtilTest {
                 Arguments.of("2024-01-01 1860"),
                 Arguments.of("2024-01-01 2500"),
                 Arguments.of("2024-01-32"),
-                Arguments.of("2024-13-01"));
+                Arguments.of("2024-13-01"),
+                Arguments.of("10000-13-01"));
     }
 }

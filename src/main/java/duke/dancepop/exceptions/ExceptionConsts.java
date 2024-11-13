@@ -11,4 +11,5 @@ public class ExceptionConsts {
   public static final String TO_EMPTY_ERROR = "The /to date/time of a {0} cannot be empty.";
   public static final String BY_EMPTY_ERROR = "The /by date/time of a {0} cannot be empty.";
   public static final String UNKNOWN_COMMAND_ERROR = "I have no idea what that means.";
+  public static final String INVALID_DATETIME_ERROR = "You have entered an invalid Date Time";
 }

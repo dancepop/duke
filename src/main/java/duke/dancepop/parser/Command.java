@@ -64,7 +64,7 @@ class TodoCommand extends BinaryCommand<String> {
 class DeadlineCommand extends BinaryCommand<String> {
   LocalDateTime by;
 
-  public DeadlineCommand(String value, String by) {
+  public DeadlineCommand(String value, String by) throws InputException {
     super(value);
     this.by = DateTimeUtil.userInputToLocalDateTime(by);
   }
@@ -79,7 +79,7 @@ class EventCommand extends BinaryCommand<String> {
   LocalDateTime from;
   LocalDateTime to;
 
-  public EventCommand(String value, String from, String to) {
+  public EventCommand(String value, String from, String to) throws InputException {
     super(value);
     this.from = DateTimeUtil.userInputToLocalDateTime(from);
     this.to = DateTimeUtil.userInputToLocalDateTime(to);

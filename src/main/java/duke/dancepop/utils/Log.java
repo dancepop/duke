@@ -3,7 +3,7 @@ package duke.dancepop.utils;
 public class Log {
     public static void printMsg(String... messages) {
         printSeparator();
-        for (String message :messages) {
+        for (String message : messages) {
             println(message);
         }
         printSeparator();

@@ -1,9 +1,9 @@
 package duke.dancepop;
 
 import duke.dancepop.entities.Deadline;
+import duke.dancepop.entities.Event;
 import duke.dancepop.entities.Task;
 import duke.dancepop.entities.Todo;
-import duke.dancepop.entities.Event;
 import duke.dancepop.utils.DateTimeUtil;
 import duke.dancepop.utils.Log;
 
@@ -91,7 +91,7 @@ public class Storage {
                         break;
                 }
             }
-        }  catch (IOException ioe) {
+        } catch (IOException ioe) {
             Log.printMsg("Error occurred while loading file: ", ioe.getMessage());
         }
     }

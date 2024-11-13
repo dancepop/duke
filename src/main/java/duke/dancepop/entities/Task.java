@@ -4,17 +4,19 @@ import duke.dancepop.enums.TaskEnum;
 
 public abstract class Task {
     private final TaskEnum type;
-    private boolean isDone;
     private final String description;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
         this.type = getType();
     }
 
-    protected abstract TaskEnum getType();
+    public abstract TaskEnum getType();
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
     public boolean getDone() {
         return isDone;

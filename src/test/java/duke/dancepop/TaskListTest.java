@@ -18,9 +18,17 @@ import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TaskListTest {
+    private static final LocalDateTime startDT = LocalDateTime.of(2024, 1, 1, 0, 0, 0);
+    private static final LocalDateTime endDT = LocalDateTime.of(2024, 1, 1, 0, 0, 0);
     private ByteArrayOutputStream outputStream;
-    private static final LocalDateTime startDT = LocalDateTime.of(2024, 1, 1, 0,0,0);
-    private static final LocalDateTime endDT = LocalDateTime.of(2024, 1, 1, 0,0,0);
+
+    private static Stream<Task> getTasks() {
+        return Stream.of(
+                new Todo("description"),
+                new Deadline("description", startDT),
+                new Event("description", startDT, endDT)
+        );
+    }
 
     @BeforeEach
     void setup() {
@@ -62,13 +70,5 @@ class TaskListTest {
         assertTrue(output.contains("1. " + todo));
         assertTrue(output.contains("2. " + deadline));
         assertTrue(output.contains("3. " + event));
-    }
-
-    private static Stream<Task> getTasks() {
-        return Stream.of(
-                new Todo("description"),
-                new Deadline("description", startDT),
-                new Event("description", startDT, endDT)
-        );
     }
 }

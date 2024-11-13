@@ -6,8 +6,8 @@ import duke.dancepop.utils.DateTimeUtil;
 import java.time.LocalDateTime;
 
 public class Event extends Task {
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private final LocalDateTime start;
+    private final LocalDateTime end;
 
     // TODO: Fix design for inheritance
     public Event(String description, LocalDateTime start, LocalDateTime end) {
@@ -16,7 +16,7 @@ public class Event extends Task {
         this.end = end;
     }
 
-    protected TaskEnum getType() {
+    public TaskEnum getType() {
         return TaskEnum.EVENT;
     }
 

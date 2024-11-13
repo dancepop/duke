@@ -46,7 +46,7 @@ public class TaskList {
     }
 
     public static void print() {
-        String header = "Here are the tasks in your list:";
+        String header = "Here are the task-s in your list:";
         String[] taskDescriptions = tasks.stream()
                 .map(Task::toString)
                 .toArray(String[]::new);

@@ -4,6 +4,7 @@ import duke.dancepop.entities.Deadline;
 import duke.dancepop.entities.Task;
 import duke.dancepop.entities.Todo;
 import duke.dancepop.entities.Event;
+import duke.dancepop.utils.DateTimeUtil;
 import duke.dancepop.utils.Log;
 
 import java.io.FileWriter;
@@ -43,7 +44,7 @@ public class Storage {
                     } else if (task instanceof Deadline deadline) {
                         writer.append("D|").append(String.valueOf(deadline.getDone())).append("|").append(deadline.getDescription()).append("|").append(deadline.getDeadline().toString()).append("\n");
                     } else if (task instanceof Event event) {
-                        writer.append("E|").append(String.valueOf(event.getDone())).append("|").append(event.getDescription()).append("|").append(event.getStart().toString()).append("|").append(event.getEnd().toString()).append("\n");
+                        writer.append("E|").append(String.valueOf(event.getDone())).append("|").append(event.getDescription()).append("|").append(DateTimeUtil.toCsvString(event.getStart())).append("|").append(DateTimeUtil.toCsvString(event.getEnd())).append("\n");
                     }
                 }
 
@@ -79,12 +80,12 @@ public class Storage {
                         TaskList.add(todo);
                         break;
                     case "D":
-                        Task deadline = new Deadline(parts[2], parts[3]);
+                        Task deadline = new Deadline(parts[2], DateTimeUtil.isoToLocalDateTime(parts[3]));
                         deadline.setDone(parts[1]);
                         TaskList.add(deadline);
                         break;
                     case "E":
-                        Task event = new Event(parts[2], parts[3], parts[4]);
+                        Task event = new Event(parts[2], DateTimeUtil.isoToLocalDateTime(parts[3]), DateTimeUtil.isoToLocalDateTime(parts[4]));
                         event.setDone(parts[1]);
                         TaskList.add(event);
                         break;

@@ -12,12 +12,15 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class TaskListTest {
     private ByteArrayOutputStream outputStream;
+    private static final LocalDateTime startDT = LocalDateTime.of(2024, 1, 1, 0,0,0);
+    private static final LocalDateTime endDT = LocalDateTime.of(2024, 1, 1, 0,0,0);
 
     @BeforeEach
     void setup() {
@@ -45,8 +48,8 @@ class TaskListTest {
     @Test()
     void Given_Tasks_When_Print_Should_PrintTaskCorrectly() {
         Task todo = new Todo("description");
-        Task deadline = new Deadline("description", "deadline");
-        Task event = new Event("description", "start", "end");
+        Task deadline = new Deadline("description", startDT);
+        Task event = new Event("description", startDT, endDT);
 
         TaskList.add(todo);
         TaskList.add(deadline);
@@ -64,8 +67,8 @@ class TaskListTest {
     private static Stream<Task> getTasks() {
         return Stream.of(
                 new Todo("description"),
-                new Deadline("description", "deadline"),
-                new Event("description", "start", "end")
+                new Deadline("description", startDT),
+                new Event("description", startDT, endDT)
         );
     }
 }

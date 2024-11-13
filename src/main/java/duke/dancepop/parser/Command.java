@@ -1,6 +1,7 @@
 package duke.dancepop.parser;
 
 import duke.dancepop.Storage;
+import duke.dancepop.utils.DateTimeUtil;
 import duke.dancepop.utils.Log;
 import duke.dancepop.TaskList;
 import duke.dancepop.entities.Deadline;
@@ -12,6 +13,7 @@ import duke.dancepop.exceptions.ErrorMessageBuilder;
 import duke.dancepop.exceptions.ExitException;
 import duke.dancepop.exceptions.InputException;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public abstract class Command {
@@ -60,11 +62,11 @@ class TodoCommand extends BinaryCommand<String> {
 }
 
 class DeadlineCommand extends BinaryCommand<String> {
-  String by;
+  LocalDateTime by;
 
   public DeadlineCommand(String value, String by) {
     super(value);
-    this.by = by;
+    this.by = DateTimeUtil.userInputToLocalDateTime(by);
   }
 
   public void execute() {
@@ -74,13 +76,13 @@ class DeadlineCommand extends BinaryCommand<String> {
 }
 
 class EventCommand extends BinaryCommand<String> {
-  String from;
-  String to;
+  LocalDateTime from;
+  LocalDateTime to;
 
   public EventCommand(String value, String from, String to) {
     super(value);
-    this.from = from;
-    this.to = to;
+    this.from = DateTimeUtil.userInputToLocalDateTime(from);
+    this.to = DateTimeUtil.userInputToLocalDateTime(to);
   }
 
   public void execute() {

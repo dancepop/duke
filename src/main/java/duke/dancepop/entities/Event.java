@@ -1,6 +1,7 @@
 package duke.dancepop.entities;
 
 import duke.dancepop.enums.TaskEnum;
+import duke.dancepop.utils.DateTimeUtil;
 
 import java.time.LocalDateTime;
 
@@ -28,6 +29,6 @@ public class Event extends Task {
     }
 
     public String toString() {
-        return super.toString() + " (from: " + start + " to: " + end + ")";
+        return super.toString() + " (from: " + DateTimeUtil.toString(start) + " to: " + DateTimeUtil.toString(end) + ")";
     }
 }

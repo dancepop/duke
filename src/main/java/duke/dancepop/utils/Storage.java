@@ -18,6 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+// Referenced from
+// https://stackoverflow.com/questions/58313994/how-to-write-into-the-same-csv-file-with-filewriter
+// https://www.javaguides.net/2019/07/java-read-file-with-filesreadalllines-api.html
 public class Storage {
     private static final String FILE_PATH = "volume/";
     private static final String DEFAULT_FILE_NAME = "data.csv";

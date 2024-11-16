@@ -34,6 +34,7 @@ public class Storage {
      * @param fileName The name of the file to save the tasks.
      */
     public static void saveToFile(String fileName) {
+        ensureDirectoryExists();
         Path filePath = Paths.get(FILE_PATH, fileName);
         Log.printMsg("Saving tasks to " + filePath);
 
@@ -54,6 +55,8 @@ public class Storage {
         } catch (IOException ioe) {
             Log.printMsg("Error occurred while saving file: ", ioe.getMessage());
         }
+
+        Log.printMsg("Finished saving tasks to " + filePath);
     }
 
     /**
@@ -100,6 +103,7 @@ public class Storage {
         } catch (IOException | FileException ioe) {
             Log.printMsg(ioe.getMessage());
         }
+        Log.printMsg("Finished loading data from " + filePath);
     }
 
     /**
@@ -173,5 +177,17 @@ public class Storage {
 
     private static void createEmptyCsvFile(FileWriter writer) throws IOException {
         writer.append("").flush();
+    }
+
+    private static void ensureDirectoryExists() {
+        // Referenced from https://howtodoinjava.com/java/io/how-to-check-if-file-exists-in-java/#:~:text=To%20test%20to%20see%20if,and%20otherwise%20does%20not%20exists.
+        Path directoryPath = Paths.get(FILE_PATH);
+        if (!Files.exists(directoryPath)) {
+            try {
+                Files.createDirectories(directoryPath);
+            } catch (IOException e) {
+                Log.printMsg("Error creating directory: ", e.getMessage());
+            }
+        }
     }
 }
